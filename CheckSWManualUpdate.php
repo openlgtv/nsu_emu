@@ -1,5 +1,7 @@
 <?php
-	/*	LG NSU emulator, by SMX  */
+/*	LG NSU emulator, by SMX */
+define("EXIT_SUCCESS", 0);
+define("EXIT_FAILURE", 1);	
 	class Logger {
 		private $logfile;
 		public function initLog(){
@@ -96,15 +98,20 @@
 	$reqno=0;
 	if(!is_dir("requests")) mkdir("requests");
 	chmod("requests", 0777);
-	while(file_exists("requests/".$model_nm.$reqprefix.$reqno.$reqpostfix)){
-		$reqno++;
+	$filename = "requests/".$model_nm.$reqprefix.$reqno.$reqpostfix;
+	while(file_exists($filename)){
+		$data = file_get_contents($filename);
+		if(!strcmp($data, $indata))
+			goto reqsaved; //we have the same request on disk
+		else
+			$filename = "requests/".$model_nm.$reqprefix.++$reqno.$reqpostfix;
 	}
 	$fn = "requests/".$model_nm.$reqprefix.$reqno.$reqpostfix;
 	$logger->log("Dumping Request to ".$fn." ...");
 	file_put_contents($fn, $indata);
 	chmod($fn, 0666);
 	
-	
+	reqsaved:
 	$usesourcefile = false; //assume we have to build the response
 	$foundconfig=false; //assume we have no config
 	if(file_exists("server.cfg")){		//found config file
@@ -280,14 +287,14 @@
 			$outdata.="<MSG>$message</MSG>";
 		$outdata.="</RESPONSE>";
 		return_data($outdata);
-		exit();
+		exit(EXIT_FAILURE);
 	}
 	
 	//Mostly for debugging
 	function return_message($message){
 		$outdata=$message;
 		return_data($outdata);
-		exit();
+		exit(EXIT_FAILURE);
 	}
 	
 	function return_data($outdata){
@@ -297,5 +304,6 @@
 		header("Content-Transfer-Encoding: binary");
 		header("Content-Length: " . strlen($outdata));
 		echo $outdata;
+		exit(EXIT_SUCCESS);
 	}
 ?>

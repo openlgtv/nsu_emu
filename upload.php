@@ -2,7 +2,7 @@
 	<head><title>Nus request sender</title></head>
 	<body>
 	<center>
-		<img src="http://openlgtv.org.ru/wiki/openlgtv_logo.png" width=5% style="float:center;"></img>
+		<img src="logo.png" width=5% style="float:center;"></img>
 		<h1>NSU Emulator by SMX</h1>
 		<h2>Choose a request file</h2>
 		<form method="post" action="upload.php" enctype="multipart/form-data">
