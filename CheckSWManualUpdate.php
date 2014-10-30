@@ -101,15 +101,16 @@ define("EXIT_FAILURE", 1);
 	$filename = "requests/".$model_nm.$reqprefix.$reqno.$reqpostfix;
 	while(file_exists($filename)){
 		$data = file_get_contents($filename);
-		if(!strcmp($data, $indata))
+		if(!strcmp($data, $indata)){
+			$logger->log("Skipping Request dump (same data already on disk)");
 			goto reqsaved; //we have the same request on disk
-		else
+		} else {
 			$filename = "requests/".$model_nm.$reqprefix.++$reqno.$reqpostfix;
+		}
 	}
-	$fn = "requests/".$model_nm.$reqprefix.$reqno.$reqpostfix;
-	$logger->log("Dumping Request to ".$fn." ...");
-	file_put_contents($fn, $indata);
-	chmod($fn, 0666);
+	$logger->log("Dumping Request to ".$filename." ...");
+	file_put_contents($filename, $indata);
+	chmod($filename, 0666);
 	
 	reqsaved:
 	$usesourcefile = false; //assume we have to build the response
