@@ -122,6 +122,7 @@ define("EXIT_FAILURE", 1);
 			$fwname=str_replace(str_split("\t\n\r "),"",$fwname);
 			$fwname=explode("=",$fwname);
 			if(empty($fwname[0]) || $fwname[0][0] == '#' || count($fwname) != 2) continue;
+			$logger->log($fwname[0]."=>".$fwname[1]);
 			if($fwname[0] == "@ALL_OVERRIDE" || $fwname[0] == $model_nm || strtoupper($fwname[0] == $model_nm)){ //if we found a matching config
 				$foundconfig = true;
 				if($fwname[0] == "@ALL_OVERRIDE"){
@@ -240,7 +241,7 @@ define("EXIT_FAILURE", 1);
 		$message = "Success";
 	if(!isset($rid) || $rid == "")
 		$rid=rand(882670000,882679999);
-	if(!isset($data) || $date == "")	
+	if(!isset($date) || $date == "")
 		$gmt=gmdate("d M Y H:i:s", time())." GMT";
 	if(!isset($img_name) || $img_name == "" || !file_exists("epks/".$img_name)){
 		$logger->log("ERROR: EPK File ".$img_name." Missing!");

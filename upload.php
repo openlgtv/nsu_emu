@@ -22,8 +22,16 @@ function dopost($url,$data){
 	curl_setopt($curl, CURLOPT_HEADER, false);
 	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	$result = curl_exec($curl);
+	$code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 	curl_close($curl);
-	return $result;
+	if(strval($code)[0] == "2" || strval($code[0]) == "3"){
+		return $result;
+	}
+	echo "The server can't process your request<br>";
+	echo "Requested url: ${url}<br>";
+	echo "-----server reply (status code ".$code.")-----<br>";
+	echo $result;
+	return false;
 
 }
 
@@ -156,6 +164,9 @@ if(isset($_POST["request"])){
 	
 	echo "<h2>NUS Reply for <font color='orange'>".$_FILES['response']["name"]."</font></h2>";
 	$res = dopost($target_url,$requestdata);
+	if($res === false){
+		exit();
+	}
 	if(base64_decode($res, true) === false){
 		echo "-----php bug-----<br>";
 		echo $res;
