@@ -122,7 +122,7 @@ define("EXIT_FAILURE", 1);
 			$fwname=str_replace(str_split("\t\n\r "),"",$fwname);
 			$fwname=explode("=",$fwname);
 			if(empty($fwname[0]) || $fwname[0][0] == '#' || count($fwname) != 2) continue;
-			$logger->log($fwname[0]."=>".$fwname[1]);
+			//$logger->log($fwname[0]."=>".$fwname[1]);
 			if($fwname[0] == "@ALL_OVERRIDE" || $fwname[0] == $model_nm || strtoupper($fwname[0] == $model_nm)){ //if we found a matching config
 				$foundconfig = true;
 				if($fwname[0] == "@ALL_OVERRIDE"){
