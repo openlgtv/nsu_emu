@@ -60,6 +60,8 @@ It should point to the Apache directory listing with our files in
 
 Now Create the new directory "nsu_emu" in "xampp/htdocs" and copy the files there
 
+If you're running on linux, run setup_dirs.sh to create the needed directories with the proper permissions
+
 NSU CONFIGURATION:
 -------------------
 edit server.cfg (check the file comments for details)
