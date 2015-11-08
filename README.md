@@ -68,14 +68,18 @@ snu.lge.com.usgcac.cdnetworks.net=snu.lge.com
 
 then under [RANGE_SET] section make sure that:   
 * "DHCPRange" is a valid range in your subnet
-* "SubmetMask" is not commented (comments are ';' or '#' symbols) and correct (usually 255.255.255.0 is ok)
-* "DomainServer" is not commented and points to your LAN IP, e.g
+* "SubmetMask" is **not** commented (not starting with ';' or '#' symbols) and correct (usually 255.255.255.0 is ok)
+* "DomainServer" is not commented and points to your LAN IP
+* "Router" is not commented and points to your LAN router
+* There's only a [RANGE_SET] block, delete the others
+
+Example (192.168.0.6 is my PC IP, 192.168.0.1 is my Router)
 ```
-DomainServer=<your LAN IP>
-```
-* "Router" is not commented and points to your LAN router, e.g
-```
+[RANGE_SET]
+DHCPRange=192.168.0.100-192.168.0.254
+SubnetMask=255.255.255.0
 Router=192.168.0.1
+DomainServer=192.168.0.6
 ```
 
 Save the config and run "RunStandAlone.bat"  
