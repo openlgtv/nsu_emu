@@ -17,14 +17,20 @@ RewriteRule ^(.*)\.laf$ $1.php [L]
 
 This will redirect all requests to files with .laf extension to .php ones   
 So for example: CheckSWManualUpdate.laf --> CheckSWManualUpdate.php   
-  
-Then search for "DocumentRoot" and change
+
+Now Create the new directory "nsu_emu" in "xampp/htdocs" and copy the files contained in this repository there  
+You should have this path (may be different depending on your OS/configuration)  
 ```
-/xampp/htdocs
+C:\xampp\htdocs\nsu_emu
 ```
-with
+
+Now go back to the "httpd.conf" file, and search for "DocumentRoot". You should see something like  
 ```
-/xampp/htdocs/nsu_emu
+DocumentRoot "/xampp/htdocs"
+```  
+or similar. Replace it with  
+```
+DocumentRoot "/xampp/htdocs/nsu_emu"
 ```
 
 Open the XAMPP control panel and start/restart apache
@@ -32,7 +38,7 @@ Open the XAMPP control panel and start/restart apache
 -------------------
 
 Go to your network adapter configuration and make sure the IP is set to static. Open the DNS configuration   
-(on Windows it's under Adapter Settings, IPV4, Advanced, DNS) and make sure you have
+(on Windows it's under Adapter Settings, IPV4, Advanced, DNS) and make sure you have  
 
 * \<your LAN IP\>
 * 8.8.8.8
@@ -77,12 +83,12 @@ Save the config and run "RunStandAlone.bat"
 Now you can check by opening a browser and going to "http://snu.lge.com" and "http://su.lge.com"  
 It should point to the Apache directory listing with our files in
 
-Now Create the new directory "nsu_emu" in "xampp/htdocs" and copy the files there  
-
 If you're running on linux, run setup_dirs.sh to create the needed directories with the proper permissions  
 
 NSU CONFIGURATION:
 -------------------
+**Note: all paths are relative to nsu_emu folder in htdocs**  
+
 edit server.cfg (check the file comments for details)  
 create a folder named "epks" and store your epk files there  
 eventually create a folder named "models" if you have custom hand-crafted response files in xml format you want to use (don't supply base64 encoded responses)  
