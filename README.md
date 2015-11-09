@@ -116,12 +116,13 @@ ipconfig /flushdns
 Then, go to Control Panel -> Internet Options, and delete the browser cache.  
 If you're using other browsers like Firefox or Chrome, also delete their caches (to use the test page).  
 
-Use the File chooser to select a REQUEST file (REQUEST, not RESPONSE). You can get Requests by using WireShark or checking the "requests" directory.  
+Use the File chooser to select a REQUEST file. You can get Requests by using WireShark or checking the "requests" directory read below).  
 
-Press the submit button to request the fw update. If you see a report with a Download button, and pressing the button starts the firmware download, then the server is working fine. If you see an error or any other message, you probably missed something.
+The request (which can also be referred to as NSU Signature), is what the TV sends to the NSU server when its asking for an update.  
 
-The Emulator will dump all the requests there, so you can just check for FW update (even without server.cfg configured) and it will dump request  
+The Emulator will automatically dump all the incoming requests in the "request" folder, so you can just check for firmware update on your TV (even without server.cfg configured) and it will dump/capture the request  
 
+Press the submit button to request the firmware update **simulation**. If you see a report with a Download button, and pressing the button starts the firmware download, then the server is working fine. If you see an error or any other message, you probably missed something.
 
 TROUBLESHOOTING:
 ---------------------
