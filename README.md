@@ -45,8 +45,9 @@ Go to your network adapter configuration and make sure the IP is set to static. 
 * 8.8.4.4
 * \<your Router IP\>
 
-in the list, in that order. The lan ip will be used for custom hostnames, and the others will be used as Forwarding Servers   
-for all other requests.
+in the list, in that order. The lan ip will be used for custom hostnames, and the others will be used as Forwarding Servers for all other requests.
+
+**NOTE: You'll likely need to clear the DNS cache, read in the LOCAL TESTING section below for more infos**
 
 Open C:\DualServer\DualServer.ini (or the equivalent on your OS) and perform the following steps:   
 under [DNS_HOSTS] section add:
@@ -102,6 +103,13 @@ LOCAL TESTING:
 -------------------
 If you want to make sure the configuration works before trying it out on the TV, navigate to "http://127.0.0.1/upload.php" and you'll find a test page.  
 You can use that page to **simulate** an LG TV that is requesting a FW update.  
+
+First of all, make sure that the DNS Resolver cache is cleared. To do that on Windows, open a cmd window with Admin rights, and run
+```
+ipconfig /flushdns
+```
+Then, go to Control Panel -> Internet Options, and delete the browser cache.  
+If you're using other browsers like Firefox or Chrome, also delete their caches (to use the test page).  
 
 Use the File chooser to select a REQUEST file (REQUEST, not RESPONSE). You can get Requests by using WireShark or checking the "requests" directory.  
 
