@@ -97,9 +97,14 @@ edit server.cfg (check the file comments for details)
 create a folder named "epks" and store your epk files there  
 eventually create a folder named "models" if you have custom hand-crafted response files in xml format you want to use (don't supply base64 encoded responses)  
 
-If you want to make sure the configuration works, navigate to "http://127.0.0.1/upload.php" and you'll find a test page.  
+
+LOCAL TESTING:
+-------------------
+If you want to make sure the configuration works before trying it out on the TV, navigate to "http://127.0.0.1/upload.php" and you'll find a test page.  
 You can use that page to **simulate** an LG TV that is requesting a FW update.  
 
 Use the File chooser to select a REQUEST file (REQUEST, not RESPONSE). You can get Requests by using WireShark or checking the "requests" directory.  
+
+Press the submit button to request the fw update. If you see a report with a Download button, and pressing the button starts the firmware download, then the server is working fine. If you see an error or any other message, you probably missed something.
 
 The Emulator will dump all the requests there, so you can just check for FW update (even without server.cfg configured) and it will dump request  
