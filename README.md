@@ -40,6 +40,8 @@ Open the XAMPP control panel and start/restart apache
 Go to your network adapter configuration and make sure the IP is set to static. Open the DNS configuration   
 (on Windows it's under Adapter Settings, IPV4, Advanced, DNS) and make sure you have  
 
+**NOTE: When i write "\<your LAN IP\>" i mean your Computer IP on your LAN, the static one you assigned above, without <> characters**
+
 * \<your LAN IP\>
 * 8.8.8.8
 * 8.8.4.4
