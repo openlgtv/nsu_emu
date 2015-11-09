@@ -1,4 +1,7 @@
 #NSU Emu by SMX:
+If you like my work, you can donate me :)  
+[@smx-smx](https://github.com/smx-smx): <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K58G5YC9M76QN"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="[paypal]" /></a>
+
 PREPARATION:
 ------------------
 You need to download and install XAMPP. You can get it from https://www.apachefriends.org/download.html   
