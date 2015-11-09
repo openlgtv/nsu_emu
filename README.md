@@ -52,7 +52,7 @@ in the list, in that order. The lan ip will be used for custom hostnames, and th
 Open C:\DualServer\DualServer.ini (or the equivalent on your OS) and perform the following steps:   
 under [DNS_HOSTS] section add:
 ```
-snu.lge.com.usgcac.cdnetworks.net=\<your LAN IP\>
+snu.lge.com.usgcac.cdnetworks.net=<your LAN IP>
 su.lge.com=<your LAN IP>
 ```
 
